@@ -2,9 +2,9 @@ package com.spring.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;

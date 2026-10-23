@@ -36,6 +36,6 @@ public class CommentaryServiceImpl implements CommentaryService{
         commentaryRepository.deleteById(id);
     }
     private Sort sortByIdAsc() {
-        return new Sort(Sort.Direction.DESC, "id");
+        return Sort.by(Sort.Direction.DESC, "id");
     }
 }
