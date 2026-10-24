@@ -11,7 +11,9 @@ import java.time.LocalDate;
 @Table(name="TB_Commentary")
 public class Commentary {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    // Pin the Hibernate 5 behavior (shared "hibernate_sequence", step 1) so existing PostgreSQL data keeps working after the Hibernate 6 upgrade.
+    @SequenceGenerator(name = "blog_id_seq", sequenceName = "hibernate_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blog_id_seq")
     private Long id;
 
     @NotBlank

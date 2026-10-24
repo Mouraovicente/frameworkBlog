@@ -18,7 +18,8 @@ public class SecurityConfig {
             "/",
             "/posts",
             "/posts/{id}",
-            "/bootstrap/**"
+            "/bootstrap/**",
+            "/error"
     };
 
     @Bean
