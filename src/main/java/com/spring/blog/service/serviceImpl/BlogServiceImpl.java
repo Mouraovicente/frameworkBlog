@@ -38,7 +38,7 @@ public class BlogServiceImpl implements BlogService {
         blogRepository.deleteById(id);
     }
     private Sort sortByIdAsc() {
-        return new Sort(Sort.Direction.DESC, "id");
+        return Sort.by(Sort.Direction.DESC, "id");
     }
 
 

@@ -2,9 +2,9 @@ package com.spring.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +14,9 @@ import java.util.Set;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    // Pin the Hibernate 5 behavior (shared "hibernate_sequence", step 1) so existing PostgreSQL data keeps working after the Hibernate 6 upgrade.
+    @SequenceGenerator(name = "blog_id_seq", sequenceName = "hibernate_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "blog_id_seq")
     private Long id;
 
     @NotBlank

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -50,6 +50,8 @@ public class BlogController {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos!");
             return "redirect:/newpost";
         }
+        // Spring 6 also binds the {id} path variable (the post id) to Commentary.id; clear it so save() inserts instead of merging a missing row.
+        commentary.setId(null);
         commentary.setData(LocalDate.now());
        commentaryService.saveCommentary(id,commentary);
 
